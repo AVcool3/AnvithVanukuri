@@ -7,7 +7,7 @@ A responsive personal portfolio built with HTML, CSS, and JavaScript.
 - Profile photo area with a local placeholder
 - Social media/contact links
 - Short about section
-- Coursework highlights with no GPA field
+- Coursework highlights
 - Experience timeline
 - Project cards that link to GitHub repositories
 
