@@ -350,9 +350,51 @@ h3 {
   padding: 0.25rem 0.55rem;
 }
 
+.education-details {
+  margin: 0 0 1.4rem;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.education-details li {
+  margin-bottom: 0.2rem;
+}
+
+.education-details li strong {
+  color: var(--text);
+}
+
+.skills-grid {
+  align-items: start;
+}
+
+.skill-group {
+  gap: 0.9rem;
+}
+
+.skill-group .tag-list {
+  margin-top: 0;
+}
+
 .timeline {
   display: grid;
   gap: 1rem;
+}
+
+.highlights {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.highlights li {
+  margin-bottom: 0.4rem;
+}
+
+.highlights li:last-child {
+  margin-bottom: 0;
 }
 
 .timeline-item {
