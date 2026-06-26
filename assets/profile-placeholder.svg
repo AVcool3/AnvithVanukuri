@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Profile photo placeholder</title>
+  <desc id="desc">A stylized avatar placeholder for Anvith Vanukuri.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <linearGradient id="avatar" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" stop-opacity="0.96" />
+      <stop offset="100%" stop-color="#dbeafe" stop-opacity="0.86" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" rx="96" fill="#0f172a" />
+  <circle cx="164" cy="134" r="164" fill="url(#background)" opacity="0.34" />
+  <circle cx="512" cy="136" r="128" fill="#0ea5e9" opacity="0.22" />
+  <circle cx="320" cy="246" r="108" fill="url(#avatar)" />
+  <path
+    fill="url(#avatar)"
+    d="M122 530c19-100 96-166 198-166s179 66 198 166c4 21-12 40-34 40H156c-22 0-38-19-34-40Z"
+  />
+  <text
+    x="320"
+    y="554"
+    fill="#0f172a"
+    font-family="Inter, Arial, sans-serif"
+    font-size="80"
+    font-weight="800"
+    letter-spacing="-6"
+    text-anchor="middle"
+  >
+    AV
+  </text>
+</svg>
