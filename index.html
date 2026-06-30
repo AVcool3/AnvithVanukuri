@@ -8,6 +8,7 @@
       content="Personal portfolio website for Anvith Vanukuri, a Northwestern student focused on FinTech, AI, financial services, and technology."
     />
     <title>Anvith Vanukuri | Personal Website</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,7 +32,7 @@
           <li><a href="#coursework">Coursework</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#highlights">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#projects">Miscellaneous</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -42,25 +43,22 @@
         <div class="hero-content">
           <p class="eyebrow">Personal Portfolio</p>
           <h1>Hi, I'm <span id="profile-name">Anvith Vanukuri</span>.</h1>
+          <button
+            id="typewriter-control"
+            class="typewriter-line"
+            type="button"
+            aria-label="Cycle portfolio focus"
+          >
+            <span>Building around</span>
+            <strong id="typewriter-text" aria-live="polite">FinTech</strong>
+            <span class="typewriter-cursor" aria-hidden="true"></span>
+          </button>
           <p id="profile-summary" class="hero-summary">
             I am a Northwestern University student studying Mathematical Methods in the Social
             Sciences and Computer Science, with interests across FinTech, AI, financial services, and
             the technology stack.
           </p>
           <div id="hero-actions" class="hero-actions" aria-label="Featured profile links"></div>
-        </div>
-        <div class="profile-card" aria-label="Profile overview">
-          <div class="photo-frame">
-            <img
-              id="profile-photo"
-              src="assets/profile-placeholder.svg"
-              alt="Profile photo of Anvith Vanukuri"
-            />
-          </div>
-          <div class="profile-details">
-            <p class="profile-label">Connect with me</p>
-            <div id="social-links" class="social-links"></div>
-          </div>
         </div>
       </section>
 
@@ -106,9 +104,9 @@
 
       <section id="projects" class="section">
         <div class="section-heading">
-          <p class="eyebrow">Projects</p>
-          <h2>GitHub projects</h2>
-          <p>Selected work with direct links to repositories on GitHub.</p>
+          <p class="eyebrow">Miscellaneous</p>
+          <h2>Miscellaneous</h2>
+          <p>Selected projects, experiments, and extras with links to GitHub where available.</p>
         </div>
         <div id="project-list" class="card-grid project-grid"></div>
       </section>

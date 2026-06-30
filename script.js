@@ -1,7 +1,6 @@
 const profile = {
   name: "Anvith Vanukuri",
   initials: "AV",
-  photo: "assets/profile-placeholder.svg",
   summary:
     "I am a Northwestern University student studying Mathematical Methods in the Social Sciences and Computer Science, with interests across FinTech, AI, financial services, and the technology stack.",
   about:
@@ -181,7 +180,7 @@ const profile = {
       skills: ["HTML", "CSS", "JavaScript"],
     },
     {
-      title: "GitHub Projects",
+      title: "Project Archive",
       description:
         "A place to feature future FinTech, AI, data, and software projects connected directly to GitHub repositories.",
       repo: "https://github.com/AVcool3",
@@ -198,6 +197,13 @@ const profile = {
 };
 
 const byId = (id) => document.getElementById(id);
+const typewriterPhrases = [
+  "FinTech ideas",
+  "AI workflows",
+  "financial services",
+  "data-backed products",
+  "startup experiments",
+];
 
 function createLink({ label, url }, className, text = label) {
   const link = document.createElement("a");
@@ -233,9 +239,11 @@ function renderSocialLinks() {
   const actionsContainer = byId("hero-actions");
 
   profile.socials.forEach((social) => {
-    const socialLink = createLink(social, "social-link", social.icon);
-    socialLink.setAttribute("aria-label", social.label);
-    socialContainer.appendChild(socialLink);
+    if (socialContainer) {
+      const socialLink = createLink(social, "social-link", social.icon);
+      socialLink.setAttribute("aria-label", social.label);
+      socialContainer.appendChild(socialLink);
+    }
 
     const contactLink = createLink(social, "button", social.label);
     contactContainer.appendChild(contactLink);
@@ -344,6 +352,49 @@ function renderProjects() {
   });
 }
 
+function setupTypewriter() {
+  const text = byId("typewriter-text");
+  const control = byId("typewriter-control");
+  let phraseIndex = 0;
+  let characterIndex = 0;
+  let isDeleting = false;
+
+  const type = () => {
+    const phrase = typewriterPhrases[phraseIndex];
+    const nextText = phrase.slice(0, characterIndex);
+    text.textContent = nextText;
+
+    if (!isDeleting && characterIndex <= phrase.length) {
+      characterIndex += 1;
+    } else if (isDeleting && characterIndex >= 0) {
+      characterIndex -= 1;
+    }
+
+    if (characterIndex > phrase.length) {
+      isDeleting = true;
+      window.setTimeout(type, 1300);
+      return;
+    }
+
+    if (characterIndex < 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
+      characterIndex = 0;
+    }
+
+    window.setTimeout(type, isDeleting ? 42 : 78);
+  };
+
+  control.addEventListener("click", () => {
+    phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
+    characterIndex = typewriterPhrases[phraseIndex].length;
+    isDeleting = false;
+    text.textContent = typewriterPhrases[phraseIndex];
+  });
+
+  type();
+}
+
 function setupNavigation() {
   const toggle = document.querySelector(".menu-toggle");
   const navLinks = byId("nav-links");
@@ -366,10 +417,6 @@ function renderProfile() {
   byId("profile-summary").textContent = profile.summary;
   byId("about-text").textContent = profile.about;
   byId("current-year").textContent = new Date().getFullYear();
-
-  const photo = byId("profile-photo");
-  photo.src = profile.photo;
-  photo.alt = `Profile photo of ${profile.name}`;
 }
 
 renderProfile();
@@ -378,4 +425,5 @@ renderCourses();
 renderExperience();
 renderHighlights();
 renderProjects();
+setupTypewriter();
 setupNavigation();
