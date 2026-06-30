@@ -4,20 +4,21 @@ A responsive personal portfolio built with HTML, CSS, and JavaScript.
 
 ## What's included
 
-- Profile photo area with a local placeholder
 - Social media/contact links
+- Browser-tab favicon logo
+- Interactive hero typewriter line
 - Short about section
 - Coursework highlights
 - Experience timeline
 - Skills, activities, and interests pulled from resume details
-- Project cards that link to GitHub repositories
+- Miscellaneous project cards that link to GitHub repositories
 
 ## Customize the site
 
 Most content lives in `script.js` inside the `profile` object.
 
-1. Replace `assets/profile-placeholder.svg` with your own photo, or add a new image file and update `profile.photo`.
-2. Update `profile.summary` and `profile.about`.
-3. Update the social links if any profile URLs change.
-4. Update the course list, experience entries, skills, activities, interests, and GitHub project repositories.
+1. Update `profile.summary` and `profile.about`.
+2. Update the social links if any profile URLs change.
+3. Update the course list, experience entries, skills, activities, interests, and miscellaneous project repositories.
+4. Edit `typewriterPhrases` in `script.js` to change the animated hero text.
 5. Open `index.html` in a browser to view the site.

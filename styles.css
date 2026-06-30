@@ -145,10 +145,13 @@ code {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   min-height: calc(100vh - 5rem);
+}
+
+.hero-content {
+  max-width: 64rem;
 }
 
 .eyebrow {
@@ -168,11 +171,59 @@ p {
 }
 
 h1 {
-  max-width: 12ch;
+  max-width: 13ch;
   margin-bottom: 1.2rem;
   font-size: clamp(3.5rem, 10vw, 6.8rem);
   line-height: 0.92;
   letter-spacing: -0.08em;
+}
+
+.typewriter-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 3rem;
+  margin: 0 0 1.3rem;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--muted);
+  font: inherit;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  font-weight: 700;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.typewriter-line strong {
+  min-width: 11.5rem;
+  color: var(--text);
+  text-align: left;
+}
+
+.typewriter-line:hover,
+.typewriter-line:focus-visible {
+  border-color: var(--ring);
+  background: rgba(56, 189, 248, 0.16);
+  transform: translateY(-2px);
+}
+
+.typewriter-cursor {
+  width: 0.12rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: var(--accent);
+  animation: blink 900ms steps(2, start) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 h2 {
@@ -194,8 +245,7 @@ h3 {
 .contact-section p,
 .card p,
 .detail-list,
-.timeline-item p,
-.profile-details {
+.timeline-item p {
   color: var(--muted);
 }
 
@@ -255,41 +305,12 @@ h3 {
   background: linear-gradient(135deg, #7dd3fc, #a5b4fc);
 }
 
-.profile-card,
 .card,
 .timeline-item,
 .contact-section {
   border: 1px solid var(--border);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
   box-shadow: var(--shadow);
-}
-
-.profile-card {
-  overflow: hidden;
-  border-radius: calc(var(--radius) + 8px);
-}
-
-.photo-frame {
-  aspect-ratio: 1;
-  padding: 1rem;
-}
-
-.photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius);
-  background: var(--bg-soft);
-}
-
-.profile-details {
-  padding: 0 1.25rem 1.35rem;
-}
-
-.profile-label {
-  margin-bottom: 0.8rem;
-  color: var(--text);
-  font-weight: 800;
 }
 
 .social-link {
@@ -457,10 +478,6 @@ h3 {
     padding-top: 4rem;
   }
 
-  .profile-card {
-    max-width: 24rem;
-  }
-
   .card-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -482,5 +499,14 @@ h3 {
   .contact-links .button,
   .hero-actions .button {
     width: 100%;
+  }
+
+  .typewriter-line {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .typewriter-line strong {
+    min-width: auto;
   }
 }

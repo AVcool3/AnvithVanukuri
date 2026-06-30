@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Anvith Vanukuri logo</title>
+  <defs>
+    <linearGradient id="mark" x1="12" x2="116" y1="16" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8" />
+      <stop offset="1" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="#0f172a" />
+  <path
+    fill="url(#mark)"
+    d="M64 18 110 110H91l-8-18H45l-8 18H18L64 18Zm12 58L64 48 52 76h24Z"
+  />
+  <path fill="#f8fafc" d="M68 110 94 52h18l-27 58H68Z" opacity=".9" />
+</svg>
