@@ -9,7 +9,7 @@ manager, build step, dependency manifest, lint config, or test suite — it is j
 ### Running the site (development)
 
 Serve the directory with any static file server and open it in a browser. The page
-content in the Coursework, Experience, and Projects sections is injected at runtime by
+content in the Coursework, Experience, Publications, and Projects sections is injected at runtime by
 `script.js`, so opening the file via `file://` works, but serving over HTTP is preferred:
 
 ```
