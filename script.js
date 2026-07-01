@@ -137,6 +137,16 @@ const profile = {
       ],
     },
   ],
+  papers: [
+    {
+      title: "Modeling Double-Star Orbits with Bayesian Optimization",
+      venue: "Harper College Astronomy & Physics Lab",
+      period: "October 2023 - November 2024",
+      description:
+        "Published and presented research using Bayesian optimization to model double-star orbits with Monte Carlo methods in R.",
+      skills: ["Bayesian Optimization", "Monte Carlo Methods", "R", "Astronomy"],
+    },
+  ],
   skills: [
     "Telugu",
     "Spanish (Conversational)",
@@ -285,6 +295,27 @@ function renderExperience() {
   });
 }
 
+function renderPapers() {
+  const paperList = byId("paper-list");
+
+  profile.papers.forEach((paper) => {
+    const card = document.createElement("article");
+    card.className = "card paper-card";
+    card.innerHTML = `
+      <p class="card-meta">${paper.period} | ${paper.venue}</p>
+      <h3>${paper.title}</h3>
+      <p>${paper.description}</p>
+    `;
+    card.appendChild(createTags(paper.skills));
+
+    if (paper.url) {
+      card.appendChild(createLink({ label: "Read Paper", url: paper.url }, "button"));
+    }
+
+    paperList.appendChild(card);
+  });
+}
+
 function createDescriptionList(descriptions) {
   if (descriptions.length === 1) {
     const paragraph = document.createElement("p");
@@ -423,6 +454,7 @@ renderProfile();
 renderSocialLinks();
 renderCourses();
 renderExperience();
+renderPapers();
 renderHighlights();
 renderProjects();
 setupTypewriter();

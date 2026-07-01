@@ -403,6 +403,13 @@ h3 {
   font-weight: 800;
 }
 
+.card-meta {
+  margin-bottom: 0.45rem;
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
 .detail-list {
   display: grid;
   gap: 0.55rem;
@@ -414,6 +421,7 @@ h3 {
   color: var(--accent);
 }
 
+.paper-card .button,
 .project-card .button {
   align-self: flex-start;
   margin-top: auto;
