@@ -421,7 +421,7 @@ h3 {
   color: var(--accent);
 }
 
-.paper-card .button,
+.publication-card .button,
 .project-card .button {
   align-self: flex-start;
   margin-top: auto;

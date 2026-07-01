@@ -137,14 +137,28 @@ const profile = {
       ],
     },
   ],
-  papers: [
+  publications: [
     {
-      title: "Modeling Double-Star Orbits with Bayesian Optimization",
-      venue: "Harper College Astronomy & Physics Lab",
-      period: "October 2023 - November 2024",
+      title:
+        "Speckle Interferometry of WDS 21555+1053, WDS 19594+3206, and WDS 20213+0250 Binary Star Systems",
+      venue: "Boyce Astro Research Observatory / Astronomy research",
+      period: "2024",
       description:
-        "Published and presented research using Bayesian optimization to model double-star orbits with Monte Carlo methods in R.",
-      skills: ["Bayesian Optimization", "Monte Carlo Methods", "R", "Astronomy"],
+        "Measured binary-star separation angles and distances using speckle interferometry, then compared observations against published orbital catalogs to evaluate orbit fit.",
+      url: "assets/publications/speckle-interferometry-binary-stars.pdf",
+      linkLabel: "Read Paper",
+      skills: ["Astronomy", "Speckle Interferometry", "Astrometry", "Data Analysis"],
+    },
+    {
+      title:
+        "Modern Portfolio Theory as a Vector Calculus Framework: Risk Aversion in Northwestern Investment Management Group's Portfolio",
+      venue: "MATH 285-3 Project, Northwestern University",
+      period: "May 2026",
+      description:
+        "Developed mean-variance optimization from first principles, connected portfolio utility to vector calculus, and reverse-optimized risk aversion in NIMG's portfolio.",
+      url: "assets/publications/modern-portfolio-theory-vector-calculus.pdf",
+      linkLabel: "Read Project",
+      skills: ["Modern Portfolio Theory", "Vector Calculus", "Mean-Variance Optimization", "Python"],
     },
   ],
   skills: [
@@ -295,24 +309,26 @@ function renderExperience() {
   });
 }
 
-function renderPapers() {
-  const paperList = byId("paper-list");
+function renderPublications() {
+  const publicationList = byId("publication-list");
 
-  profile.papers.forEach((paper) => {
+  profile.publications.forEach((publication) => {
     const card = document.createElement("article");
-    card.className = "card paper-card";
+    card.className = "card publication-card";
     card.innerHTML = `
-      <p class="card-meta">${paper.period} | ${paper.venue}</p>
-      <h3>${paper.title}</h3>
-      <p>${paper.description}</p>
+      <p class="card-meta">${publication.period} | ${publication.venue}</p>
+      <h3>${publication.title}</h3>
+      <p>${publication.description}</p>
     `;
-    card.appendChild(createTags(paper.skills));
+    card.appendChild(createTags(publication.skills));
 
-    if (paper.url) {
-      card.appendChild(createLink({ label: "Read Paper", url: paper.url }, "button"));
+    if (publication.url) {
+      card.appendChild(
+        createLink({ label: publication.linkLabel || "Read Paper", url: publication.url }, "button"),
+      );
     }
 
-    paperList.appendChild(card);
+    publicationList.appendChild(card);
   });
 }
 
@@ -454,7 +470,7 @@ renderProfile();
 renderSocialLinks();
 renderCourses();
 renderExperience();
-renderPapers();
+renderPublications();
 renderHighlights();
 renderProjects();
 setupTypewriter();
