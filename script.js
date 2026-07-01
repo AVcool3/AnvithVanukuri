@@ -139,6 +139,16 @@ const profile = {
   ],
   publications: [
     {
+      title: "Estimating Orbital Parameters for Visual Double Stars",
+      venue: "Open European Journal on Variable Stars",
+      period: "January 2025",
+      description:
+        "Applied Hamiltonian Monte Carlo and Bayesian optimization methods to estimate orbital parameters for nine visual double-star systems, validating results against Washington Double Star catalog values.",
+      url: "assets/publications/estimating-orbital-parameters-visual-double-stars.pdf",
+      linkLabel: "Read Publication",
+      skills: ["Bayesian Optimization", "Hamiltonian Monte Carlo", "STAN", "Astronomy"],
+    },
+    {
       title:
         "Speckle Interferometry of WDS 21555+1053, WDS 19594+3206, and WDS 20213+0250 Binary Star Systems",
       venue: "Boyce Astro Research Observatory / Astronomy research",
