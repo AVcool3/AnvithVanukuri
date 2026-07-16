@@ -306,6 +306,8 @@ h3 {
 }
 
 .card,
+.feature-panel,
+.mini-card,
 .timeline-item,
 .contact-section {
   border: 1px solid var(--border);
@@ -333,6 +335,51 @@ h3 {
 .section-heading {
   max-width: 42rem;
   margin-bottom: 2rem;
+}
+
+.feature-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1rem;
+  border-radius: calc(var(--radius) + 8px);
+  padding: 1rem;
+}
+
+.feature-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 16rem),
+    rgba(15, 23, 42, 0.34);
+  padding: 1.5rem;
+}
+
+.feature-main p:not(.card-meta),
+.mini-card p {
+  color: var(--muted);
+}
+
+.feature-main .button {
+  margin-top: auto;
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.mini-card {
+  border-radius: var(--radius);
+  padding: 1.1rem;
+}
+
+.mini-card p {
+  margin-bottom: 0;
 }
 
 .card-grid {
@@ -477,6 +524,7 @@ h3 {
 
   .hero,
   .split-section,
+  .feature-panel,
   .contact-section {
     grid-template-columns: 1fr;
   }
@@ -492,6 +540,10 @@ h3 {
 
   .contact-section {
     display: grid;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
   }
 }
 
