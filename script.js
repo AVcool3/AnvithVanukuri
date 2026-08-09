@@ -413,8 +413,9 @@ function setupTypewriter() {
   const text = byId("typewriter-text");
   const control = byId("typewriter-control");
   let phraseIndex = 0;
-  let characterIndex = 0;
+  let characterIndex = typewriterPhrases[0].length;
   let isDeleting = false;
+  text.textContent = typewriterPhrases[0];
 
   const type = () => {
     const phrase = typewriterPhrases[phraseIndex];

@@ -181,12 +181,12 @@ h1 {
 .typewriter-line {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.7rem;
   min-height: 3rem;
-  margin: 0 0 1.3rem;
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  margin: 0 0 0.55rem;
+  border: 1px solid rgba(56, 189, 248, 0.55);
   border-radius: 999px;
-  background: rgba(56, 189, 248, 0.1);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(129, 140, 248, 0.12));
   color: var(--muted);
   font: inherit;
   font-size: clamp(1rem, 2vw, 1.18rem);
@@ -200,24 +200,45 @@ h1 {
 }
 
 .typewriter-line strong {
-  min-width: 11.5rem;
-  color: var(--text);
+  min-width: 13.5rem;
+  color: #e0f2fe;
+  font-weight: 800;
   text-align: left;
+  text-shadow: 0 0 28px rgba(56, 189, 248, 0.35);
+}
+
+.typewriter-label {
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.52);
+  color: #bae6fd;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.28rem 0.55rem;
+  text-transform: uppercase;
 }
 
 .typewriter-line:hover,
 .typewriter-line:focus-visible {
   border-color: var(--ring);
-  background: rgba(56, 189, 248, 0.16);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(129, 140, 248, 0.18));
   transform: translateY(-2px);
 }
 
 .typewriter-cursor {
-  width: 0.12rem;
-  height: 1.35rem;
+  width: 0.18rem;
+  height: 1.55rem;
   border-radius: 999px;
   background: var(--accent);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.75);
   animation: blink 900ms steps(2, start) infinite;
+}
+
+.typewriter-hint {
+  max-width: 32rem;
+  margin-bottom: 1.35rem;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 @keyframes blink {
@@ -568,5 +589,9 @@ h3 {
 
   .typewriter-line strong {
     min-width: auto;
+  }
+
+  .typewriter-hint {
+    text-align: center;
   }
 }
