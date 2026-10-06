@@ -26,7 +26,7 @@ const profile = {
 
   // The one-sentence statement under the name. Keep it short; it's set large.
   statement:
-    "I measure things that are hard to see — the orbit of a binary star, the right weight for a position — and then try to build something useful from the measurement.",
+    "A student of markets and measurement. I like finding the right number for a thing, then building something simple around it.",
 
   // "01 · Notes". Each string becomes a paragraph.
   about: [
