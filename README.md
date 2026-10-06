@@ -39,8 +39,8 @@ a component.
 | Hero           | `profile.name / location / program / statement`, `profile.socials` (`hero: true`) |
 | 01 Notes       | `profile.about` (array of paragraphs), `profile.marginNote` |
 | 02 Now         | copy is in `index.html` under `<section id="now">` |
-| 03 Ledger      | `profile.experiences` (sorted oldest → newest automatically) |
-| 04 Papers      | `profile.publications` (`glyph: "stars"` or `"frontier"`) |
+| 03 Ledger      | `profile.experiences` (sorted newest → oldest automatically) |
+| 04 Papers      | `profile.publications` (sorted newest first; `glyph: "stars"` or `"frontier"`) |
 | 05 Transcript  | `profile.courses` |
 | 06 Margins     | `profile.skills / activities / interests` |
 | 07 Builds      | `profile.projects` |

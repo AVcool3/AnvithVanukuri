@@ -47,8 +47,11 @@ const profile = {
     { label: "Instagram", handle: "anvithv31", url: "https://www.instagram.com/anvithv31/", hero: false },
   ],
 
-  // "05 · Transcript". `note` is the one-line description, `tags` is the small mono line.
+  // "05 · Transcript". Listed most recent first. `note` is the one-line description,
+  // `tags` is the small mono line beneath it.
   courses: [
+    { title: "Data Structures and Algorithms", note: "Core data structures, algorithm design and analysis, and asymptotic complexity.", tags: ["algorithms", "complexity", "implementation"] },
+    { title: "AI Algorithms", note: "Search, planning, probabilistic reasoning, and learning algorithms behind modern AI systems.", tags: ["search", "probability", "learning"] },
     { title: "Game Theory", note: "Strategic decision-making, incentives, competition, and applied economic reasoning.", tags: ["strategy", "markets", "incentives"] },
     { title: "Decision-Making", note: "Frameworks for analyzing choices, uncertainty, and tradeoffs in social science contexts.", tags: ["analysis", "uncertainty", "judgment"] },
     { title: "Microeconomics", note: "Consumer behavior, firm decisions, market structures, and economic modeling.", tags: ["economics", "modeling", "markets"] },
@@ -58,7 +61,7 @@ const profile = {
   ],
 
   // "03 · Ledger". Order here doesn't matter — the renderer sorts by `period`
-  // (oldest first) by reading the first "Month YYYY" in the string.
+  // (newest first) by reading the first "Month YYYY" in the string.
   // Set `upcoming: true` to show a small "upcoming" badge.
   experiences: [
     {
@@ -153,7 +156,8 @@ const profile = {
     },
   ],
 
-  // "04 · Papers". `glyph` picks the small drawing on the right: "stars" or "frontier".
+  // "04 · Papers". Sorted newest first by `period`. `glyph` picks the small drawing
+  // on the right: "stars" or "frontier".
   publications: [
     {
       title: "Estimating Orbital Parameters for Visual Double Stars",
@@ -258,15 +262,19 @@ function externalAttrs(url) {
 const pad2 = (n) => String(n).padStart(2, "0");
 
 /**
- * Turn the first "Month YYYY" in a period string into a sortable number.
- * "November 2025 – Present" -> 2025 * 12 + 10. Used to order the ledger.
+ * Turn the first date in a period string into a sortable number.
+ * "November 2025 – Present" -> 2025 * 12 + 10. A bare year like "2024" counts
+ * as January of that year. Used to order the ledger and the papers list.
  */
 function periodStart(period) {
-  const match = period.match(/([A-Za-z]+)\s+(\d{4})/);
-  if (!match) return 0;
   const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-  const month = months.indexOf(match[1].slice(0, 3).toLowerCase());
-  return Number(match[2]) * 12 + Math.max(month, 0);
+  const withMonth = period.match(/([A-Za-z]+)\s+(\d{4})/);
+  if (withMonth) {
+    const month = months.indexOf(withMonth[1].slice(0, 3).toLowerCase());
+    return Number(withMonth[2]) * 12 + Math.max(month, 0);
+  }
+  const yearOnly = period.match(/(\d{4})/);
+  return yearOnly ? Number(yearOnly[1]) * 12 : 0;
 }
 
 /** Only run motion when the visitor hasn't asked for less of it. */
@@ -297,10 +305,10 @@ function renderNotes() {
   byId("margin-note-text").textContent = profile.marginNote;
 }
 
-/** 03 · Ledger: horizontal experience track, oldest -> newest. */
+/** 03 · Ledger: horizontal experience track, newest -> oldest. */
 function renderLedger() {
   const track = byId("experience-track");
-  const sorted = [...profile.experiences].sort((a, b) => periodStart(a.period) - periodStart(b.period));
+  const sorted = [...profile.experiences].sort((a, b) => periodStart(b.period) - periodStart(a.period));
 
   sorted.forEach((exp, i) => {
     track.append(
@@ -355,11 +363,12 @@ const glyphs = {
     </svg>`,
 };
 
-/** 04 · Papers. */
+/** 04 · Papers, newest first. */
 function renderPapers() {
   const list = byId("publication-list");
+  const sorted = [...profile.publications].sort((a, b) => periodStart(b.period) - periodStart(a.period));
 
-  profile.publications.forEach((pub, i) => {
+  sorted.forEach((pub, i) => {
     const glyph = el("div", { className: "paper-glyph" });
     glyph.innerHTML = glyphs[pub.glyph] || glyphs.stars;
 
