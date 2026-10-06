@@ -10,7 +10,7 @@ python3 -m http.server 8000
 ## The idea
 
 The site is styled as an "observatory notebook" — warm paper and graphite ink in light
-mode, a deep night sky in dark mode (follows your OS). It leans on the through-line in
+mode, warm charcoal in dark mode (follows your OS). It leans on the through-line in
 the resume: measuring double-star orbits, then measuring risk and position sizes.
 
 Calm graphics, all drawn in code:
