@@ -5,185 +5,401 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Personal portfolio website for Anvith Vanukuri, a Northwestern student focused on FinTech, AI, financial services, and technology."
+      content="Anvith Vanukuri — Northwestern student in Mathematical Methods in the Social Sciences and Computer Science. Markets, measurement, and quiet building."
     />
-    <title>Anvith Vanukuri | Personal Website</title>
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <!-- Color the browser chrome on phones to match the paper / charcoal backgrounds. -->
+    <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15151a" media="(prefers-color-scheme: dark)" />
+    <title>Anvith Vanukuri</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=3" />
+
+    <!--
+      FONTS
+      Fraunces  -> headings. A soft, slightly old-fashioned serif with real character.
+      Newsreader -> body text. A calm reading serif so the site feels like a notebook, not a dashboard.
+      JetBrains Mono -> small labels, dates, numbers (the "ledger" voice).
+      To change fonts: swap this link and update the --font-* variables at the top of styles.css.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
+    <!--
+      BACKGROUND STARS
+      A fixed, full-screen canvas sits behind everything. script.js draws a sparse field of
+      faint stars on it and drifts them very slowly as you scroll (parallax). It is purely
+      decorative, so it's hidden from screen readers and ignores pointer events.
+      Remove this element (and the call to setupStarfield() in script.js) to drop the effect.
+    -->
+    <canvas id="starfield" class="starfield" aria-hidden="true"></canvas>
+
+    <!-- Thin scroll-progress line along the very top of the page. Width is set by script.js. -->
+    <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+    <!--
+      HEADER / NAVIGATION
+      The nav is intentionally small and quiet. Each link carries a two-digit index so the
+      page reads like a table of contents. script.js marks the link for the section currently
+      in view with aria-current="true" (styled in CSS as a small filled dot).
+    -->
     <header class="site-header">
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="logo" href="#home" aria-label="Anvith Vanukuri home">AV</a>
+      <nav class="nav" aria-label="Primary">
+        <a class="wordmark" href="#top">
+          <span class="wordmark-mark" aria-hidden="true"></span>
+          <span>Anvith Vanukuri</span>
+        </a>
+
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
           <span class="sr-only">Toggle navigation</span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
         </button>
+
         <ul id="nav-links" class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#studiohone">StudioHone</a></li>
-          <li><a href="#coursework">Coursework</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#publications">Writing</a></li>
-          <li><a href="#highlights">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#notes"><small>01</small> Notes</a></li>
+          <li><a href="#now"><small>02</small> Now</a></li>
+          <li><a href="#ledger"><small>03</small> Ledger</a></li>
+          <li><a href="#papers"><small>04</small> Papers</a></li>
+          <li><a href="#transcript"><small>05</small> Transcript</a></li>
+          <li><a href="#margins"><small>06</small> Margins</a></li>
+          <li><a href="#builds"><small>07</small> Builds</a></li>
+          <li><a href="#hello"><small>08</small> Hello</a></li>
         </ul>
       </nav>
     </header>
 
-    <main id="home">
-      <section class="hero section">
-        <div class="hero-content">
-          <p class="eyebrow">Personal Portfolio</p>
-          <h1>Hi, I'm <span id="profile-name">Anvith Vanukuri</span>.</h1>
-          <button
-            id="typewriter-control"
-            class="typewriter-line"
-            type="button"
-            aria-label="Cycle portfolio focus"
-          >
-            <span class="typewriter-label">Current focus</span>
-            <strong id="typewriter-text" aria-live="polite">FinTech</strong>
-            <span class="typewriter-cursor" aria-hidden="true"></span>
-          </button>
-          <p class="typewriter-hint">Click the pill to rotate through what I am building and exploring.</p>
-          <p id="profile-summary" class="hero-summary">
-            I am a Northwestern University student studying Mathematical Methods in the Social
-            Sciences and Computer Science, with interests across FinTech, AI, financial services, and
-            the technology stack.
+    <main id="top">
+      <!--
+        ================================================================
+        HERO
+        Big serif name, a short statement, and a slowly orbiting pair of
+        stars (an SVG animated with CSS). The orbit is a nod to the
+        double-star research — it's also just a nice, calm thing to watch.
+        ================================================================
+      -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-text">
+          <p class="hero-kicker mono">
+            <span id="hero-location">Evanston, Illinois</span>
+            <span class="dot-sep" aria-hidden="true">·</span>
+            <span id="hero-program">MMSS + Computer Science, Northwestern</span>
           </p>
-          <div id="hero-actions" class="hero-actions" aria-label="Featured profile links"></div>
+
+          <h1 id="hero-title" class="hero-title">
+            <span id="profile-name">Anvith Vanukuri</span>
+          </h1>
+
+          <!-- The main statement. Edit profile.statement in script.js, not here. -->
+          <p id="profile-statement" class="hero-statement">
+            A student of markets and measurement. I like finding the right number for a thing,
+            then building something simple around it.
+          </p>
+
+          <!-- Short links, rendered from profile.socials in script.js. -->
+          <div id="hero-links" class="hero-links" aria-label="Profile links"></div>
         </div>
+
+        <!--
+          ORBIT GRAPHIC
+          Two stars circling a shared center of mass. The larger primary traces a small
+          orbit; the smaller companion traces a larger one, just like a real binary pair.
+          Animation durations are in CSS (.orbit-primary / .orbit-companion). Both
+          respect prefers-reduced-motion.
+        -->
+        <figure class="hero-orbit" aria-hidden="true">
+          <svg viewBox="0 0 400 400" class="orbit-svg">
+            <defs>
+              <radialGradient id="star-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="currentColor" stop-opacity="0.55" />
+                <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <!-- faint reference rings, like a star chart -->
+            <circle class="orbit-ring" cx="200" cy="200" r="150" />
+            <circle class="orbit-ring orbit-ring--dashed" cx="200" cy="200" r="58" />
+            <!-- tick marks around the big ring -->
+            <g class="orbit-ticks">
+              <line x1="200" y1="44" x2="200" y2="52" />
+              <line x1="356" y1="200" x2="348" y2="200" />
+              <line x1="200" y1="356" x2="200" y2="348" />
+              <line x1="44" y1="200" x2="52" y2="200" />
+            </g>
+            <!-- barycenter crosshair -->
+            <line class="orbit-cross" x1="194" y1="200" x2="206" y2="200" />
+            <line class="orbit-cross" x1="200" y1="194" x2="200" y2="206" />
+            <!-- companion star on the big ring -->
+            <g class="orbit-companion">
+              <g transform="translate(200 50)">
+                <circle r="26" fill="url(#star-glow)" />
+                <circle class="star star--companion" r="5" />
+              </g>
+            </g>
+            <!-- primary star on the small ring (opposite side) -->
+            <g class="orbit-primary">
+              <g transform="translate(200 258)">
+                <circle r="40" fill="url(#star-glow)" />
+                <circle class="star star--primary" r="9" />
+              </g>
+            </g>
+          </svg>
+          <figcaption class="mono orbit-caption">
+            <span>WDS 21555+1053</span>
+            <span>period · 48 s</span>
+          </figcaption>
+        </figure>
+
+        <a class="scroll-hint mono" href="#notes">
+          <span>scroll</span>
+          <span class="scroll-hint-line" aria-hidden="true"></span>
+        </a>
       </section>
 
-      <section id="about" class="section split-section">
-        <div>
-          <p class="eyebrow">About Me</p>
-          <h2>A short introduction</h2>
-        </div>
-        <div class="section-copy">
-          <p id="about-text">
-            I am an aspiring FinTech and AI professional who enjoys building new projects, analyzing
-            markets, and working at the intersection of finance, technology, and data.
-          </p>
-        </div>
-      </section>
+      <!--
+        ================================================================
+        01 · NOTES (about)
+        Two prose paragraphs with a hand-written-style margin note.
+        Content lives in profile.about (array of paragraphs) in script.js.
+        ================================================================
+      -->
+      <section id="notes" class="section" aria-labelledby="notes-title">
+        <header class="section-head">
+          <span class="section-index mono">01</span>
+          <h2 id="notes-title">Notes</h2>
+        </header>
 
-      <section id="studiohone" class="section feature-section">
-        <div class="section-heading">
-          <p class="eyebrow">StudioHone</p>
-          <h2>Personalized portfolio optimization</h2>
-          <p>
-            StudioHone turns investment opinions into disciplined position sizes by measuring risk
-            tolerance, translating market views into portfolio weights, and testing ideas safely with
-            paper trading.
-          </p>
-        </div>
-        <div class="feature-panel">
-          <div class="feature-main">
-            <p class="card-meta">studiohone.com</p>
-            <h3>Know your number.</h3>
-            <p>
-              Hone helps investors move from gut-feel sizing to a more rigorous decision process:
-              measure a personal risk-aversion tier, state company-level views, and receive exact
-              buy/sell weights with reasoning for each recommended trade.
+        <div class="prose-with-margin">
+          <div id="about-text" class="prose reveal"></div>
+          <aside class="margin-note reveal" aria-label="Margin note">
+            <p id="margin-note-text">
+              A rough rule I keep coming back to: the interesting part is rarely the model.
+              It's deciding what to measure and how much to trust it.
             </p>
-            <a class="button primary" href="https://studiohone.com" target="_blank" rel="noopener noreferrer">
-              Visit StudioHone
+          </aside>
+        </div>
+      </section>
+
+      <!--
+        ================================================================
+        02 · NOW (StudioHone)
+        The featured thing I'm building. The graphic is an efficient
+        frontier that draws itself as the section scrolls into view
+        (script.js animates stroke-dashoffset against scroll position).
+        ================================================================
+      -->
+      <section id="now" class="section" aria-labelledby="now-title">
+        <header class="section-head">
+          <span class="section-index mono">02</span>
+          <h2 id="now-title">Now</h2>
+        </header>
+
+        <div class="feature">
+          <div class="feature-copy reveal">
+            <p class="mono feature-label">
+              <a href="https://studiohone.com" target="_blank" rel="noopener noreferrer">studiohone.com</a>
+            </p>
+            <h3 class="feature-title">Know your number.</h3>
+            <p>
+              StudioHone turns an investment opinion into a disciplined position size. You answer
+              a handful of either-or questions to pin down a personal risk-aversion tier, state
+              what you believe about a company — target, timeframe, confidence — and get back exact
+              buy and sell weights with the reasoning for each one.
+            </p>
+            <p>
+              It blends your views with market equilibrium (Black-Litterman underneath), returns
+              hedge guidance alongside the trades, and runs only against demo portfolios or Alpaca
+              paper accounts. It can't move real money, on purpose.
+            </p>
+
+            <!-- Four short facts. Edit in the HTML directly; they're copy, not data. -->
+            <dl class="fact-list">
+              <div><dt class="mono">input</dt><dd>risk tier + company views</dd></div>
+              <div><dt class="mono">output</dt><dd>position weights + reasoning</dd></div>
+              <div><dt class="mono">model</dt><dd>mean-variance, equilibrium-anchored</dd></div>
+              <div><dt class="mono">money</dt><dd>paper only</dd></div>
+            </dl>
+
+            <a class="text-link" href="https://studiohone.com" target="_blank" rel="noopener noreferrer">
+              Visit StudioHone <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
-          <div class="feature-list" aria-label="StudioHone highlights">
-            <article class="mini-card">
-              <h3>Risk number</h3>
-              <p>Uses quick either-or choices to estimate a personal risk-aversion parameter.</p>
-            </article>
-            <article class="mini-card">
-              <h3>Investor views</h3>
-              <p>Lets users express beliefs such as a price target, timeframe, and confidence level.</p>
-            </article>
-            <article class="mini-card">
-              <h3>Position sizes</h3>
-              <p>
-                Blends views with market equilibrium to return portfolio weights, trade reasoning,
-                and hedge guidance.
-              </p>
-            </article>
-            <article class="mini-card">
-              <h3>Paper trading only</h3>
-              <p>Runs with demo portfolios or Alpaca paper accounts; it cannot move real funds.</p>
-            </article>
+
+          <!--
+            FRONTIER GRAPHIC
+            Axes = risk (x) and return (y). The curve is the efficient frontier; the dot is
+            "your" portfolio sliding onto it. The path's stroke draws in with scroll
+            progress (see drawOnScroll() in script.js, which looks for [data-draw]).
+          -->
+          <figure class="frontier reveal" aria-hidden="true">
+            <svg viewBox="0 0 420 320" class="frontier-svg">
+              <!-- faint grid -->
+              <g class="frontier-grid">
+                <line x1="60" y1="60" x2="400" y2="60" />
+                <line x1="60" y1="120" x2="400" y2="120" />
+                <line x1="60" y1="180" x2="400" y2="180" />
+                <line x1="60" y1="240" x2="400" y2="240" />
+                <line x1="145" y1="20" x2="145" y2="280" />
+                <line x1="230" y1="20" x2="230" y2="280" />
+                <line x1="315" y1="20" x2="315" y2="280" />
+              </g>
+              <!-- axes -->
+              <line class="frontier-axis" x1="60" y1="20" x2="60" y2="280" />
+              <line class="frontier-axis" x1="60" y1="280" x2="400" y2="280" />
+              <text class="frontier-label" x="400" y="300" text-anchor="end">risk (σ)</text>
+              <text class="frontier-label" x="52" y="24" text-anchor="end">return</text>
+
+              <!-- scattered "individual assets" -->
+              <g class="frontier-dots">
+                <circle cx="210" cy="190" r="2.5" />
+                <circle cx="265" cy="150" r="2.5" />
+                <circle cx="300" cy="175" r="2.5" />
+                <circle cx="330" cy="120" r="2.5" />
+                <circle cx="180" cy="235" r="2.5" />
+                <circle cx="245" cy="215" r="2.5" />
+                <circle cx="350" cy="140" r="2.5" />
+                <circle cx="290" cy="235" r="2.5" />
+              </g>
+
+              <!-- the efficient frontier, drawn in by scroll -->
+              <path
+                class="frontier-curve"
+                data-draw
+                d="M 150 262 C 150 200, 170 150, 215 112 S 330 55, 390 44"
+              />
+              <!-- the optimal point -->
+              <g class="frontier-point" data-draw-reveal>
+                <circle class="frontier-point-glow" cx="228" cy="103" r="14" />
+                <circle class="frontier-point-dot" cx="228" cy="103" r="4" />
+                <text class="frontier-label" x="240" y="98">your number</text>
+              </g>
+            </svg>
+          </figure>
+        </div>
+      </section>
+
+      <!--
+        ================================================================
+        03 · LEDGER (experience)
+        A horizontally scrolling track. Each role is a column with its
+        dates running down the left edge like a ledger line. Users can
+        scroll, drag, use the arrow buttons, or use arrow keys.
+        Entries come from profile.experiences in script.js and are
+        rendered newest -> oldest, left to right.
+        ================================================================
+      -->
+      <section id="ledger" class="section section--wide" aria-labelledby="ledger-title">
+        <header class="section-head">
+          <span class="section-index mono">03</span>
+          <h2 id="ledger-title">Ledger</h2>
+          <p class="section-sub">Roles and involvement, newest first. Scroll sideways.</p>
+          <div class="track-controls" aria-hidden="true">
+            <button type="button" class="track-btn" data-track-prev aria-label="Scroll back">&larr;</button>
+            <button type="button" class="track-btn" data-track-next aria-label="Scroll forward">&rarr;</button>
           </div>
+        </header>
+
+        <div class="track-wrap">
+          <ol id="experience-track" class="track" tabindex="0" aria-label="Experience timeline"></ol>
+          <!-- thin bar showing how far along the track you are -->
+          <div class="track-scrollbar" aria-hidden="true"><span id="track-thumb"></span></div>
         </div>
       </section>
 
-      <section id="coursework" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Coursework</p>
-          <h2>Classes I have taken</h2>
-          <p>A focused view of relevant classes, topics, and skills.</p>
-        </div>
-        <div id="course-list" class="card-grid"></div>
+      <!--
+        ================================================================
+        04 · PAPERS (publications)
+        Numbered list. Each item is a row, not a card. The astronomy
+        papers get a small star-chart glyph, the finance one a frontier glyph.
+        Data: profile.publications in script.js.
+        ================================================================
+      -->
+      <section id="papers" class="section" aria-labelledby="papers-title">
+        <header class="section-head">
+          <span class="section-index mono">04</span>
+          <h2 id="papers-title">Papers</h2>
+          <p class="section-sub">Things I've written down carefully enough to publish.</p>
+        </header>
+        <ol id="publication-list" class="paper-list"></ol>
       </section>
 
-      <section id="experience" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Experience</p>
-          <h2>Experience and involvement</h2>
-          <p>Roles, activities, and hands-on learning that shaped how I approach technical work.</p>
-        </div>
-        <div id="experience-list" class="timeline"></div>
+      <!--
+        ================================================================
+        05 · TRANSCRIPT (coursework)
+        A plain two-column list, like a real transcript. Course names in
+        serif, one-line notes beside them. Data: profile.courses.
+        ================================================================
+      -->
+      <section id="transcript" class="section" aria-labelledby="transcript-title">
+        <header class="section-head">
+          <span class="section-index mono">05</span>
+          <h2 id="transcript-title">Transcript</h2>
+          <p class="section-sub">Selected coursework.</p>
+        </header>
+        <dl id="course-list" class="transcript reveal"></dl>
       </section>
 
-      <section id="publications" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Publications & Writing</p>
-          <h2>Publications & Writing</h2>
-          <p>Selected academic papers, research projects, and quantitative writing.</p>
-        </div>
-        <div id="publication-list" class="card-grid publication-grid"></div>
+      <!--
+        ================================================================
+        06 · MARGINS (skills, activities, interests)
+        Three slow-drifting lines of text, like marginalia scribbled
+        along the edge of a page. Each line loops. Hover or focus to pause.
+        Data: profile.skills / profile.activities / profile.interests.
+        ================================================================
+      -->
+      <section id="margins" class="section section--wide" aria-labelledby="margins-title">
+        <header class="section-head">
+          <span class="section-index mono">06</span>
+          <h2 id="margins-title">Margins</h2>
+          <p class="section-sub">Tools, involvement, and the things I do when I'm not doing those.</p>
+        </header>
+        <div id="marquee-list" class="marquees"></div>
       </section>
 
-      <section id="highlights" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Skills & Interests</p>
-          <h2>Tools, activities, and interests</h2>
-          <p>Selected skills, campus involvement, and interests pulled from my resume.</p>
-        </div>
-        <div id="highlight-list" class="card-grid"></div>
+      <!--
+        ================================================================
+        07 · BUILDS (projects)
+        Simple rows with a link to the repo. Data: profile.projects.
+        ================================================================
+      -->
+      <section id="builds" class="section" aria-labelledby="builds-title">
+        <header class="section-head">
+          <span class="section-index mono">07</span>
+          <h2 id="builds-title">Builds</h2>
+          <p class="section-sub">Code, mostly in progress.</p>
+        </header>
+        <ul id="project-list" class="build-list"></ul>
       </section>
 
-      <section id="projects" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Projects</p>
-          <h2>Projects</h2>
-          <p>Selected projects, experiments, and extras with links to GitHub where available.</p>
-        </div>
-        <div id="project-list" class="card-grid project-grid"></div>
-      </section>
-
-      <section id="contact" class="section contact-section">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2>Let's connect</h2>
-          <p>
-            Reach out by email or connect with me on LinkedIn and Instagram.
+      <!--
+        ================================================================
+        08 · HELLO (contact)
+        One big line and the links. Data: profile.socials.
+        ================================================================
+      -->
+      <section id="hello" class="section section--closing" aria-labelledby="hello-title">
+        <header class="section-head">
+          <span class="section-index mono">08</span>
+          <h2 id="hello-title">Hello</h2>
+        </header>
+        <div class="closing reveal">
+          <p class="closing-line">
+            If you're working on markets, measurement, or something you can't quite explain yet,
+            I'd like to hear about it.
           </p>
+          <ul id="contact-links" class="contact-list"></ul>
         </div>
-        <div id="contact-links" class="contact-links"></div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>&copy; <span id="current-year"></span> Anvith Vanukuri. Built with HTML, CSS, and JavaScript.</p>
+    <footer class="site-footer mono">
+      <span>&copy; <span id="current-year"></span> Anvith Vanukuri</span>
+      <span>Set in Fraunces, Newsreader &amp; JetBrains Mono. Stars drawn by hand in SVG.</span>
+      <a href="#top">back to top &uarr;</a>
     </footer>
 
     <script src="script.js"></script>
