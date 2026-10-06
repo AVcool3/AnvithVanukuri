@@ -62,12 +62,22 @@ const profile = {
   // Set `upcoming: true` to show a small "upcoming" badge.
   experiences: [
     {
-      role: "M&A & Product Intern",
+      // Kept deliberately short: just the one line about what the work is.
+      role: "Product & GTM Intern",
+      organization: "InPlay Global",
+      location: "Chicago, IL",
+      period: "August 2026 – September 2026",
+      notes: ["Working on a performance-backed securities exchange."],
+    },
+    {
+      role: "M&A Product Intern",
       organization: "AJ Gallagher & Co.",
       location: "Rolling Meadows, IL",
-      period: "June 2026 – September 2026",
-      upcoming: true,
-      notes: ["Incoming internship focused on M&A and product work."],
+      period: "May 2026 – July 2026",
+      notes: [
+        "Built internal M&A tools for 5,000+ employees using Python, SharePoint, Power BI, and Azure Data Lake, including a CLI-based CIM review workflow for transaction-document analysis.",
+        "Built a Python/Azure document-scanning and claims-adjudication workflow supporting a product projected to save $8M across enterprise and personal reinsurance teams.",
+      ],
     },
     {
       role: "GTM Lead",
