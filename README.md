@@ -15,6 +15,13 @@ A responsive personal portfolio built with HTML, CSS, and JavaScript.
 - Skills, activities, and interests pulled from resume details
 - Project cards that link to GitHub repositories
 
+## Robust linear solver
+
+The `robust-solve/` folder holds a standalone JavaScript module (`solve`) that
+improves on `numpy.linalg.solve` by monitoring the growth factor of Gaussian
+elimination and escalating to safer factorizations when needed, plus a React
+demo component and a Node test suite. See `robust-solve/README.md`.
+
 ## Customize the site
 
 Most content lives in `script.js` inside the `profile` object.
