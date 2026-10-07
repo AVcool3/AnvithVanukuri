@@ -207,6 +207,13 @@ const profile = {
   ],
   projects: [
     {
+      title: "Robust Linear Solver",
+      description:
+        "A stronger linalg.solve in JavaScript: tracks the growth factor of Gaussian elimination, escalates to complete pivoting or QR, and polishes with iterative refinement. Includes a React demo.",
+      repo: "https://github.com/AVcool3/AnvithVanukuri/tree/main/robust-solve",
+      skills: ["Numerical Analysis", "JavaScript", "React"],
+    },
+    {
       title: "Personal Website",
       description:
         "A responsive portfolio built with HTML, CSS, and JavaScript to showcase coursework, experience, skills, interests, and projects.",
